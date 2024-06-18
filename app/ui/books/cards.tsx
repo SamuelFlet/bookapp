@@ -23,8 +23,8 @@ export default async function BookWrapper() {
               )}
             >
               <div className="flex flex-col items-center">
-                <h1>{book.name}</h1>
                 <h1>{book.title}</h1>
+                <h2>{book.name}</h2>
                 <h1>{book.publish_year}</h1>
                 <h1>{book.lang}</h1>
                 <h1>{book.media_type}</h1>

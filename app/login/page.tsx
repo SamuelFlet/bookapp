@@ -5,10 +5,12 @@ export default function Page() {
     <form
       action={async () => {
         "use server";
-        await signIn("github");
+        await signIn("github", { redirectTo: "/books" });
       }}
     >
-      <button type="submit">Signin with GitHub</button>
+      <button className="btn" type="submit">
+        Signin with GitHub
+      </button>
     </form>
   );
 }
