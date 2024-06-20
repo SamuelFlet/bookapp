@@ -11,7 +11,7 @@ export async function fetchBooks() {
       book.publish_year,
       book.lang,
       book.id,
-      book.media_type
+      book.img
       from
       author left join book on book.authorid = author.id
     `;

@@ -36,5 +36,5 @@ export type BookAuthorName = {
   title: string;
   publish_year: string;
   lang: string;
-  media_type: string;
+  img: string;
 };
