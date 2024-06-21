@@ -38,3 +38,8 @@ export type BookAuthorName = {
   lang: string;
   img: string;
 };
+
+export type AuthorField = {
+  id: string;
+  name: string;
+};

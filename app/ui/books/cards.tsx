@@ -18,13 +18,13 @@ export default async function BookWrapper() {
                 <figure>
                   <img
                     className="object-scale-down h-60"
-                    src={book.img}
+                    src={book.img!}
                     alt="Album"
                   />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{book.title}</h2>
-                  <p>{book.name}</p>
+                  <p>{book.author.fullName}</p>
                   <div className="card-actions">
                     <button className="btn btn-primary">Listen</button>
                   </div>

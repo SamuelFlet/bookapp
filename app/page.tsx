@@ -10,9 +10,9 @@ export default function Home() {
           favourite quotes from all the fantastic literature out there!
         </h1>
         <div className="my-5">
-          <Link href="/books" className="btn mr-6">
+          {/* <Link href="/books" className="btn mr-6">
             See All Books
-          </Link>
+          </Link> */}
           <Link href="https://github.com/SamuelFlet/bookapp" className="btn">
             See The Code
           </Link>

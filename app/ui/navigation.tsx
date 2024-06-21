@@ -1,7 +1,11 @@
-import { SignIn } from "../authforms/auth-buttons";
-import BookappLogo from "../bookapp-logo";
+import Link from "next/link";
+// import { SignIn } from "../authforms/auth-buttons";
+// import BookappLogo from "./bookapp-logo";
+import { BookOpenIcon } from "@heroicons/react/24/solid";
+import { lusitana } from "@/app/ui/fonts";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-export function Nav() {
+export async function Nav() {
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -29,16 +33,31 @@ export function Nav() {
               </svg>
             </label>
           </div>
-          <BookappLogo />
+
+          <div
+            className={`${lusitana.className} flex-1 px-2 mx-2`}
+          >
+            <Link href={"/"}>
+              <div className="flex flex-row items-center">
+                <BookOpenIcon className="h-12 w-12" />
+                <p className="text-3xl">BookApp</p>
+              </div>
+            </Link>
+          </div>
+
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
-              <li>
-                <SignIn />
-              </li>
-              <li>
-                <a>Navbar Item 1</a>
-              </li>
+
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+
+              <li>{/* <Link href="/books/create">Add new Book</Link> */}</li>
               <li>
                 <a>Navbar Item 2</a>
               </li>
