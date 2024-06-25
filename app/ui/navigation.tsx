@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import { lusitana } from "@/app/ui/fonts";
+import { signOut } from "@/auth";
+import { PowerIcon } from "@heroicons/react/24/outline";
 
 export async function Nav() {
   return (
-    <div className="drawer">
+    <div className={`${lusitana.className} drawer`}>
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -31,9 +33,7 @@ export async function Nav() {
             </label>
           </div>
 
-          <div
-            className={`${lusitana.className} flex-1 px-2 mx-2`}
-          >
+          <div className={`${lusitana.className} flex-1 px-2 mx-2`}>
             <Link href={"/"}>
               <div className="flex flex-row items-center">
                 <BookOpenIcon className="h-12 w-12" />
@@ -47,7 +47,17 @@ export async function Nav() {
               {/* Navbar menu content here */}
               <li>{/* <Link href="/books/create">Add new Book</Link> */}</li>
               <li>
-                <a>Navbar Item 2</a>
+                <form
+                  action={async () => {
+                    "use server";
+                    await signOut();
+                  }}
+                >
+                  <button className="flex items-center">
+                    <PowerIcon className="w-6 mr-2" />
+                    <div className="hidden md:block">Sign Out</div>
+                  </button>
+                </form>
               </li>
             </ul>
           </div>
