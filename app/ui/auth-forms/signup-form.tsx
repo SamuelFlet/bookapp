@@ -1,15 +1,13 @@
 "use client";
-
-import { lusitana } from "@/app/ui/fonts";
-import {
-  ExclamationCircleIcon,
-} from "@heroicons/react/24/outline";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { createUser, userState } from "@/app/lib/actions";
+import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import { lusitana } from "@/app/ui/fonts";
 import { useFormState, useFormStatus } from "react-dom";
-import { authenticate } from "@/app/lib/actions";
 
-export default function LoginForm() {
-  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+export default function SignupForm() {
+  const initialState: userState = { message: null, errors: {} };
+  const [state, dispatch] = useFormState(createUser, initialState);
 
   return (
     <form action={dispatch} className={`${lusitana.className}`}>
@@ -31,6 +29,17 @@ export default function LoginForm() {
             type="email"
             name="email"
             placeholder="Enter your email address"
+            required
+          />
+        </label>
+        <label className="input input-bordered flex items-center gap-2">
+          Name
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="grow"
+            placeholder="Enter your full name"
             required
           />
         </label>
@@ -57,30 +66,10 @@ export default function LoginForm() {
             minLength={6}
           />
         </label>
-        <LoginButton />
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {errorMessage && (
-            <>
-              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
-          )}
-        </div>
+        <button className="btn">
+          Sign up <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+        </button>
       </div>
     </form>
-  );
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button className="btn" aria-disabled={pending}>
-      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-    </button>
   );
 }

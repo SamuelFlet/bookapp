@@ -5,11 +5,11 @@ import { Nav } from "@/app/ui/navigation";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Bookapp Dashboard",
-    default: "Bookapp Dashboard",
+    template: "%s | Bookapp",
+    default: "Bookapp",
   },
-  description: "The official Next.js Learn Dashboard built with App Router.",
-  metadataBase: new URL("https://next-learn-dashboard.vercel.sh"),
+  description: "Samuel's Bookapp to log books, quotes and authors",
+  metadataBase: new URL("https://github.com/SamuelFlet"),
 };
 
 export default function RootLayout({

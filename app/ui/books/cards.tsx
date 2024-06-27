@@ -1,5 +1,6 @@
 import { lusitana } from "@/app/ui/fonts";
 import { fetchBooks } from "@/app/lib/data";
+import Link from "next/link";
 import clsx from "clsx";
 
 export default async function BookWrapper() {
@@ -24,7 +25,9 @@ export default async function BookWrapper() {
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{book.title}</h2>
-                  <p>{book.full_name}</p>
+                  <Link href={`/authors/${book.authorId}`}>
+                    {book.fullName}
+                  </Link>
                   <div className="card-actions">
                     <button className="btn btn-primary">Listen</button>
                   </div>

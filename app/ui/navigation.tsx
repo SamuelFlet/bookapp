@@ -1,10 +1,38 @@
 import Link from "next/link";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import { lusitana } from "@/app/ui/fonts";
-import { signOut } from "@/auth";
-import { PowerIcon } from "@heroicons/react/24/outline";
+import { signOut, auth } from "@/auth";
+import { PowerIcon, UserIcon } from "@heroicons/react/24/outline";
 
 export async function Nav() {
+  const session = await auth();
+  function AuthButtons() {
+    if (session?.user) {
+      return (
+        <form
+          action={async () => {
+            "use server";
+            await signOut({ redirectTo: "/" });
+          }}
+        >
+          <button className="flex items-center">
+            <PowerIcon className="w-6 mr-2" />
+            <div className="hidden md:block">Sign Out</div>
+          </button>
+        </form>
+      );
+    } else {
+      return (
+        <div>
+          <UserIcon className="w-6" />
+          <Link href="/login" className="">
+            Sign In
+          </Link>
+        </div>
+      );
+    }
+  }
+
   return (
     <div className={`${lusitana.className} drawer`}>
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -45,19 +73,15 @@ export async function Nav() {
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
-              <li>{/* <Link href="/books/create">Add new Book</Link> */}</li>
+
               <li>
-                <form
-                  action={async () => {
-                    "use server";
-                    await signOut();
-                  }}
-                >
-                  <button className="flex items-center">
-                    <PowerIcon className="w-6 mr-2" />
-                    <div className="hidden md:block">Sign Out</div>
-                  </button>
-                </form>
+                <AuthButtons />
+              </li>
+              <li>
+                <Link href="/books">View Books</Link>
+              </li>
+              <li>
+                <Link href="/authors">View Authors</Link>
               </li>
             </ul>
           </div>
@@ -72,11 +96,14 @@ export async function Nav() {
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           {/* Sidebar content here */}
           <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
+                <AuthButtons />
+              </li>
+              <li>
+                <Link href="/books">View Books</Link>
+              </li>
+              <li>
+                <Link href="/authors">View Authors</Link>
+              </li>
         </ul>
       </div>
     </div>

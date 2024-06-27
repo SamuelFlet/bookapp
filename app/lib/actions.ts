@@ -22,6 +22,16 @@ export type userState = {
   message?: string | null;
 };
 
+export type bookState = {
+  errors?: {
+    author_id?: string[];
+    img?: string[];
+    title?: string[];
+    pub_year?: string[];
+  };
+  message?: string | null;
+};
+
 /**
  * Defines a new user schema using the zod library.
  * @returns {z.ZodObject} A zod object schema for a new user with id, email, name, and password fields.
@@ -108,5 +118,7 @@ export async function authenticate(
       }
     }
     throw error;
+  } finally {
+    redirect("/books");
   }
 }
