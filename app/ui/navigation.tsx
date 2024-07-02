@@ -16,7 +16,7 @@ export async function Nav() {
           }}
         >
           <button className="flex items-center">
-            <PowerIcon className="w-6 mr-2" />
+            <PowerIcon className="w-5 mr-2" />
             <div className="hidden md:block">Sign Out</div>
           </button>
         </form>
@@ -24,7 +24,7 @@ export async function Nav() {
     } else {
       return (
         <div>
-          <UserIcon className="w-6" />
+          <UserIcon className="w-5" />
           <Link href="/login" className="">
             Sign In
           </Link>

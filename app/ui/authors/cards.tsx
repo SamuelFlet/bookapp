@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { lusitana } from "../fonts";
 import { fetchAuthors } from "@/app/lib/data";
-import { fetchAuthorByIdWithBooks } from "@/app/lib/data";
+import { lusitana } from "../fonts";
 
 export default async function AuthWrapper() {
   const allAuthors = await fetchAuthors();

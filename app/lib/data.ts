@@ -53,15 +53,12 @@ export async function fetchAuthorById(id: number) {
   }
 }
 
-export async function fetchAuthors(){
+export async function fetchAuthors() {
   noStore();
-  try{
-    const data = await db
-    .selectFrom('author')
-    .selectAll()
-    .execute()
-    return data
-  }catch (error) {
+  try {
+    const data = await db.selectFrom("author").selectAll().execute();
+    return data;
+  } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch authors.");
   }

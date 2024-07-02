@@ -1,4 +1,5 @@
 import { fetchAuthorByIdWithBooks } from "@/app/lib/data";
+import { fetchAuthorById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 
@@ -14,24 +15,24 @@ export async function generateMetadata(
   const id = params.id;
 
   // fetch data
-  const [author] = await Promise.all([fetchAuthorByIdWithBooks(id)]);
+  const [author] = await Promise.all([fetchAuthorById(id)]);
 
 
   return {
-    title: author[0].fullName,
+    title: author!.fullName,
   };
 }
 export default async function Page({ params }: { params: { id: number } }) {
   const id = params.id;
   const [author] = await Promise.all([fetchAuthorByIdWithBooks(id)]);
-
+  const [authorName] = await Promise.all([fetchAuthorById(id)]);
   if (!author) {
     notFound();
   }
 
   return (
     <main>
-      <h1>{author[0].fullName}</h1>
+      <h1>{authorName!.fullName}</h1>
       {author.map((book, i) => {
           return (
             <div key={book.id} className={" justify-between p-4 max-w-xl"}>

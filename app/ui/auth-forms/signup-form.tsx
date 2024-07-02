@@ -1,7 +1,6 @@
 "use client";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { createUser, userState } from "@/app/lib/actions";
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { lusitana } from "@/app/ui/fonts";
 import { useFormState, useFormStatus } from "react-dom";
 
