@@ -11,10 +11,12 @@ const author = [
   {
     id: 1,
     fullName: "Aldous Huxley",
+    bio: `Aldous Leonard Huxley (July 1894 - 22 November 1963) was an English writer and philosopher. His bibliography spans nearly 50 books,including novels and non-fiction works, as well as essays, narratives, and poems.`,
   },
   {
     id: 2,
     fullName: "Kurt Vonnegut",
+    bio: `Kurt Vonnegut (November 11, 1922 - April 11, 2007) was an American author known for his satirical and darkly humorous novels. He published 14 novels, three short-story collections, five plays, and five nonfiction works over fifty-plus years; further collections have been published since his death.`,
   },
 ];
 
@@ -43,7 +45,7 @@ const book = [
   {
     authorId: 2,
     id: 4,
-    img: "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/BreakfastOfChampions%28Vonnegut%29.jpg/220px-BreakfastOfChampions%28Vonnegut%29.jpg",
+    img: "https://m.media-amazon.com/images/I/51e-JHnQMEL._AC_UF1000,1000_QL80_.jpg",
     pubYear: 1973,
     title: `Breakfast of Champions, or Goodbye Blue Monday`,
   },

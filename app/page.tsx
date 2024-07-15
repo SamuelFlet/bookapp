@@ -4,7 +4,7 @@ import { lusitana } from "@/app/ui/fonts";
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-6 md:p-2">
+    <div className="flex min-h-screen flex-col p-6 md:p-2">
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
         <div className="flex flex-col justify-center gap-6 rounded-lg  px-6 py-10 md:w-2/5 md:px-20">
           <p
@@ -30,6 +30,6 @@ export default async function Home() {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

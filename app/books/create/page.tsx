@@ -6,7 +6,7 @@ export default async function Page() {
   const authors = await fetchAuthors();
 
   return (
-    <main>
+    <div>
       <Breadcrumbs
         breadcrumbs={[
           { label: "Books", href: "/books" },
@@ -17,7 +17,9 @@ export default async function Page() {
           },
         ]}
       />
-      <Form authors={authors} />
-    </main>
+      <div className="flex flex-col items-center">
+        <Form authors={authors} />
+      </div>
+    </div>
   );
 }

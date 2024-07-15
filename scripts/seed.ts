@@ -50,6 +50,7 @@ const seedAuthors = async () => {
       .ifNotExists()
       .addColumn("id", "serial", (col) => col.primaryKey().notNull())
       .addColumn("fullName", "text", (col) => col.notNull().unique())
+      .addColumn("Bio","text")
       .execute();
 
     console.log('created "author" table');
