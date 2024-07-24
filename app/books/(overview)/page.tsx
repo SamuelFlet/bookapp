@@ -7,14 +7,23 @@ export const metadata: Metadata = {
   title: "Books",
 };
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: { query?: string };
+}) {
+  const query = searchParams?.query || '';
+  
   return (
     <div>
       <Suspense fallback={<CardSkeleton />}>
-        <BookWrapper />
+        <BookWrapper query={query} />
       </Suspense>
       <div className="fixed bottom-4 right-4">
-        <Link href={"books/create"} className="btn rounded-full py-3 px-4 shadow-lg">
+        <Link
+          href={"books/create"}
+          className="btn rounded-full py-3 px-4 shadow-lg"
+        >
           Add Book
         </Link>
       </div>

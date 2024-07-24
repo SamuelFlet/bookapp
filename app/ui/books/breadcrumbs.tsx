@@ -20,7 +20,7 @@ export default function Breadcrumbs({
           <li
             key={breadcrumb.href}
             aria-current={breadcrumb.active}
-            className={clsx(
+            className={clsx("hover:underline"
             )}
           >
             <Link href={breadcrumb.href}>{breadcrumb.label}</Link>

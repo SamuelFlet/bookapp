@@ -7,16 +7,18 @@ export default async function Page() {
 
   return (
     <div>
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: "Books", href: "/books" },
-          {
-            label: "Add book",
-            href: "/books/create",
-            active: true,
-          },
-        ]}
-      />
+      <div className="p-6">
+        <Breadcrumbs
+          breadcrumbs={[
+            { label: "All Books", href: "/books" },
+            {
+              label: "Add book",
+              href: "/books/create",
+              active: true,
+            },
+          ]}
+        />
+      </div>
       <div className="flex flex-col items-center">
         <Form authors={authors} />
       </div>

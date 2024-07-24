@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                   />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title">{book.title}</h2>
+                  <h2 className="line-clamp-1 card-title w-60">{book.title}</h2>
                   <p>{book.fullName}</p>
                   <div className="card-actions">
                     <button className="btn btn-primary">Listen</button>

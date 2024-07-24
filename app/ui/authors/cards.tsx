@@ -8,7 +8,6 @@ export default async function AuthWrapper() {
   return (
     <div className={`${lusitana.className} overflow-x-auto`}>
       <table className="table">
-        {/* head */}
         <thead>
           <tr>
             <th></th>
@@ -16,13 +15,12 @@ export default async function AuthWrapper() {
           </tr>
         </thead>
         <tbody>
-          {/* row 1 */}
           {allAuthors.map((authors, i) => {
             return (
               <tr key={authors.id}>
-                <th>{authors.id}</th>
+                <th>{i+1}</th>
                 <td>
-                  <Link href={`/authors/${authors.id}`}>
+                  <Link href={`/authors/${authors.id}`} className="hover:underline">
                     {authors.fullName}
                   </Link>
                 </td>

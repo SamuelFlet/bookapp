@@ -1,4 +1,5 @@
 import { db } from "@/utils/db";
+import { sql } from "kysely";
 import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchBooks() {
@@ -14,6 +15,27 @@ export async function fetchBooks() {
         "book.authorId",
         "book.title",
       ])
+      .execute();
+    return books;
+  } catch (err) {
+    console.log("Database Error:", err);
+    throw new Error("Failed to fetch all books");
+  }
+}
+
+export async function fetchFilteredBooks(query: string) {
+  try {
+    const books = await db
+      .selectFrom("book")
+      .innerJoin("author", "author.id", "book.authorId")
+      .select([
+        "author.fullName",
+        "book.img",
+        "book.id",
+        "book.authorId",
+        "book.title",
+      ])
+      .where("book.title", sql`ILIKE`, `%${query}%`)
       .execute();
     return books;
   } catch (err) {
